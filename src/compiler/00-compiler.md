@@ -1,0 +1,1 @@
+compiler是编译器的意思，作用是把模板转换成render函数，render函数会帮助我们创建虚拟dom
