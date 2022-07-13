@@ -130,7 +130,7 @@ const builds = {
   },
   // Runtime+compiler production build  (Browser)
   'web-full-prod': {
-    entry: resolve('web/entry-runtime-with-compiler.js'),
+    entry: resolve('web/entry-runtime-with-compiler.js'), // 找到这个文件
     dest: resolve('dist/vue.min.js'),
     format: 'umd',
     env: 'production',

@@ -46,11 +46,13 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   Vue.nextTick = nextTick
 
   // 2.6 explicit observable API
+  // 让一个对象可响应
   Vue.observable = <T>(obj: T): T => {
     observe(obj)
     return obj
   }
-
+  // 初始化 Vue.options 对象，并给其扩展
+  // components/directives/filters 注册组件、注册指令、注册过滤器
   Vue.options = Object.create(null)
   ASSET_TYPES.forEach(type => {
     Vue.options[type + 's'] = Object.create(null)
@@ -59,11 +61,11 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   // this is used to identify the "base" constructor to extend all plain-object
   // components with in Weex's multi-instance scenarios.
   Vue.options._base = Vue
-
+  // 设置 keep-alive 组件
   extend(Vue.options.components, builtInComponents)
 
-  initUse(Vue)
-  initMixin(Vue)
-  initExtend(Vue)
-  initAssetRegisters(Vue)
+  initUse(Vue) // 注册 Vue.use() 用来注册插件
+  initMixin(Vue) // 注册 Vue.mixin() 实现混入
+  initExtend(Vue) // 注册 Vue.extend() 基于传入的options返回一个组件的构造函数
+  initAssetRegisters(Vue) // 注册 Vue.directive()、 Vue.component()、Vue.filter()
 }

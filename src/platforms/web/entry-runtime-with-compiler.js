@@ -19,7 +19,7 @@ Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
-  el = el && query(el)
+  el = el && query(el)     //  el是创建vue的时候传进来的选项
 
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
